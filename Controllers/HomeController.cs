@@ -1,7 +1,6 @@
-using Biblioteka.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-
+using Biblioteka.Models;
 namespace Biblioteka.Controllers
 {
     public class HomeController : Controller
@@ -33,6 +32,6 @@ namespace Biblioteka.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-      
+        
     }
 }
