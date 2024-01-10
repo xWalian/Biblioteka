@@ -1,17 +1,30 @@
-﻿
+﻿@model List<Ksiazka>
 @{
     ViewData["Title"] = "Lista Ksiazek";
 }
 <h1>Lista Ksiazek</h1>
 <table>
-    <tr>
-        <th>Tytul</th>
-        <th>Autor</th>
-        <th>Wydawnictwo</th>
-        <th>Rok Wydania</th>
-        <th>Ilosc</th>
-    </tr>
-
+    <thead>
+        <tr>
+            <th>Tytul</th>
+            <th>Autor</th>
+            <th>Wydawnictwo</th>
+            <th>Rok Wydania</th>
+            <th>Ilosc</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var Ksiazka in Model)
+        {
+            <tr>
+                <td>@Ksiazka.autor</td>
+                <td>@Ksiazka.tytul</td>
+                <td>@Ksiazka.wydawnictwo</td>
+                <td>@Ksiazka.rok_wydania</td>
+                <td>@Ksiazka.ilosc</td>
+            </tr>
+        }
+    </tbody>
     
 </table>
 
