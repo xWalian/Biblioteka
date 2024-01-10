@@ -5,6 +5,13 @@
 <h1>Lista Ksiazek</h1>
 <table>
     <thead>
+        <form asp-controller="Ksiazki" asp-action="WyszukajKsiazki" method="get">
+            <div>
+                <label for="searchQuery">Wyszukaj książki:</label>
+                <input type="text" name="searchQuery" />
+                <button type="submit">Szukaj</button>
+            </div>
+        </form>
         <tr>
             <th>Tytul</th>
             <th>Autor</th>
