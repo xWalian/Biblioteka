@@ -28,6 +28,11 @@ namespace Biblioteka.Controllers
             return View();
         }
 
+        public IActionResult ListaKsiazek()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
