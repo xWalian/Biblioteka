@@ -68,6 +68,19 @@ namespace Biblioteka.Controllers
             }
             return View("DodajKsiazke", ksiazka);
         }
+        public IActionResult WyszukajKsiazki(string searchQuery)
+        {
+            string connectionString = "";
+            string query = "SELECT * FROM ksiazki WHERE id_kategoria LIKE @searchQuery OR tytul LIKE @searchQuery OR" +
+                " autor LIKE @searchQueryOR wydawnictwo LIKE @searchQuery OR rok_wydania LIKE @searchQuery;";
+            List<Ksiazka> listaKsiazek = new List<Ksiazka>();
+
+            using(SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query,))
+            }
+        }
     }
    
 }
