@@ -25,8 +25,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-  },
-  "ConnectionStrings": {
-    "connectionstr": "Server=(local)\\MSSQL;Database=Login_Auth;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
+ 
 }
