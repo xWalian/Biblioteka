@@ -33,9 +33,41 @@ namespace Biblioteka.Controllers
                         }
                     }
                 }
-
-                return View(ListaKsiazek);
             }
+            return View(ListaKsiazek);
+        }
+        public IActionResult DodajKsiazke()
+        {
+            return View();
+        }
+        public IActionResult ZapiszKsiazke(Ksiazka ksiazka)
+        {
+            if(ModelState.IsValid)
+            {
+                string connectionString = "";
+                string insertQuery = "INSERT INTO ksiazki (id_kategoria, autor, tytul, wydawnictwo, rok_wydania, ilosc) VALUES " +
+                     "(@id_kategoria, @autor, @tytul, @wydawnictwo, @rok_wydania, @ilosc);";
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand command = new SqlCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@id_kategoria", ksiazka.id_kategoria);
+                        command.Parameters.AddWithValue("@autor", ksiazka.autor);
+                        command.Parameters.AddWithValue("@tytul", ksiazka.tytul);
+                        command.Parameters.AddWithValue("@wydawnictwo", ksiazka.wydawnictwo);
+                        command.Parameters.AddWithValue("@rok_wydania", ksiazka.rok_wydania);
+                        command.Parameters.AddWithValue("@ilosc", ksiazka.ilosc);
+
+                        command.ExecuteNonQuery();
+
+                    }
+                }
+                return RedirectToAction("ListaKsiazek");
+            }
+            return View("DodajKsiazke", ksiazka);
         }
     }
+   
 }
