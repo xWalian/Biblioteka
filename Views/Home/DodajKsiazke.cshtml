@@ -1,0 +1,46 @@
+﻿@model Ksiazka
+
+@{
+    ViewData["Title"] = "Dodaj Książkę";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@using (Html.BeginForm("ZapiszKsiazke", "Ksiazki", FormMethod.Post))
+{
+    <div>
+        <label asp-for="id_kategoria">Id Kategorii:</label>
+        <input asp-for="id_kategoria" />
+        <span asp-validation-for="id_kategoria"></span>
+    </div>
+    <div>
+        <label asp-for="tytul">Tytuł:</label>
+        <input asp-for="tytul" />
+        <span asp-validation-for="tytul"></span>
+    </div>
+
+    <div>
+        <label asp-for="autor">Autor:</label>
+        <input asp-for="autor" />
+        <span asp-validation-for="autor"></span>
+    </div>
+    <div>
+        <label asp-for="wydawnictwo">Wydawnictwo:</label>
+        <input asp-for="wydawnictwo" />
+        <span asp-validation-for="wydawnictwo"></span>
+    </div>
+    <div>
+        <label asp-for="rok_wydania">Rok wydania:</label>
+        <input asp-for="rok_wydania" />
+        <span asp-validation-for="rok_wydania"></span>
+    </div>
+    <div>
+        <label asp-for="ilosc">Ilość:</label>
+        <input asp-for="ilosc" />
+        <span asp-validation-for="ilosc"></span>
+    </div>
+
+    <div>
+        <button type="submit">Dodaj Książkę</button>
+    </div>
+}
