@@ -7,8 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Dodaj DbContext
 builder.Services.AddDbContext<BibliotekaDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("connectionstr")));
-
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
@@ -17,6 +17,8 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+
 
 app.UseStaticFiles();
 app.UseRouting();

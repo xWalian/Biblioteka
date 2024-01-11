@@ -5,6 +5,22 @@
 <h3>@ViewData["Title"]</h3>
 
 <table>
+    <thead>
+        <form asp-controller="Ksiazki" asp-action="WyszukajKsiazki" method="get">
+            <div>
+                <label for="searchQuery">Wyszukaj książki:</label>
+                <input type="text" name="searchQuery" />
+                <button type="submit">Szukaj</button>
+            </div>
+        </form>
+        <tr>
+            <th>Tytul</th>
+            <th>Autor</th>
+            <th>Wydawnictwo</th>
+            <th>Rok Wydania</th>
+            <th>Ilosc</th>
+        </tr>
+    </thead>
     <tbody>
         @if (Model != null && Model.Any())
         {
@@ -14,6 +30,8 @@
                     <td>@ksiazka.tytul</td>
                     <td>@ksiazka.autor</td>
                     <td>@ksiazka.rok_wydania</td>
+                    <td>@ksiazka.wydawnictwo</td>
+                    <td>@ksiazka.ilosc</td>
                 </tr>
             }
         }

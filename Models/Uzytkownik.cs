@@ -15,7 +15,7 @@ namespace Biblioteka.Models
         [Column(TypeName = "nvarchar(60")]
         public string nazwisko { get; set; }
         [Column(TypeName = "date")]
-        public string data_urodzenia { get; set; }
+        public DateTime data_urodzenia { get; set; }
         [Column(TypeName = "nvarchar(60")]
         public string miasto { get; set; }
         [Column(TypeName = "nvarchar(80")]
