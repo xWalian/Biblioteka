@@ -1,7 +1,13 @@
-﻿namespace Biblioteka.Models
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace Biblioteka.Models
 {
     public class Ksiazka
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_ksiazka { get; set; }
         public int id_kategoria { get; set; }
         public string autor { get; set; }
@@ -20,6 +26,5 @@
             this.rok_wydania = rok_wydania;
             this.ilosc = ilosc;
         }
-
     }
 }

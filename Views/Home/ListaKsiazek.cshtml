@@ -1,7 +1,8 @@
-﻿@model List<Ksiazka>
+﻿@model List<Biblioteka.Models.KsiazkaViewModel>
 @{
     ViewData["Title"] = "Lista Ksiazek";
 }
+
 <h1>Lista Ksiazek</h1>
 <table>
     <thead>
@@ -21,15 +22,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var Ksiazka in Model)
+        @if (Model != null && Model.Any())
         {
-            <tr>
-                <td>@Ksiazka.autor</td>
-                <td>@Ksiazka.tytul</td>
-                <td>@Ksiazka.wydawnictwo</td>
-                <td>@Ksiazka.rok_wydania</td>
-                <td>@Ksiazka.ilosc</td>
-            </tr>
+            @foreach (var Ksiazka in Model)
+            {
+                <tr>
+                    <td>@Ksiazka.autor</td>
+                    <td>@Ksiazka.tytul</td>
+                    <td>@Ksiazka.wydawnictwo</td>
+                    <td>@Ksiazka.rok_wydania</td>
+                    <td>@Ksiazka.ilosc</td>
+                </tr>
+            }
         }
     </tbody>
 

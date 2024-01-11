@@ -1,4 +1,4 @@
-﻿using Biblioteka.Models;
+﻿/*using Biblioteka.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 
@@ -6,9 +6,15 @@ namespace Biblioteka.Controllers
 {
     public class KsiazkiController : Controller
     {
+        private readonly KsiazkaDbContext _context;
+
+        public KsiazkiController(KsiazkaDbContext context)
+        {
+            this._context = context;
+        }
         public IActionResult ListaKsiazek()
         {
-            string connectionString = "";
+            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=biblioteka;Trusted_Connection=True;MultipleActiveResultSets=true";
             string query = "SELECT * FROM ksiazki";
             List<Ksiazka> listaKsiazek = new List<Ksiazka>();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -42,16 +48,16 @@ namespace Biblioteka.Controllers
         }
         public IActionResult ZapiszKsiazke(Ksiazka ksiazka)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                string connectionString = "";
+                string connectionString = "Server=(localdb)\\mssqllocaldb;Database=biblioteka;Trusted_Connection=True;MultipleActiveResultSets=true";
                 string insertQuery = "INSERT INTO ksiazki (id_kategoria, autor, tytul, wydawnictwo, rok_wydania, ilosc) VALUES " +
                      "(@id_kategoria, @autor, @tytul, @wydawnictwo, @rok_wydania, @ilosc);";
-                using(SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
-                    using(SqlCommand command = new SqlCommand(insertQuery, connection))
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
                         command.Parameters.AddWithValue("@id_kategoria", ksiazka.id_kategoria);
                         command.Parameters.AddWithValue("@autor", ksiazka.autor);
@@ -70,12 +76,13 @@ namespace Biblioteka.Controllers
         }
         public IActionResult WyszukajKsiazki(string searchQuery)
         {
-            string connectionString = "";
+            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=biblioteka;Trusted_Connection=True;MultipleActiveResultSets=true";
             string query = "SELECT * FROM ksiazki WHERE id_kategoria LIKE @searchQuery OR tytul LIKE @searchQuery OR" +
                 " autor LIKE @searchQueryOR wydawnictwo LIKE @searchQuery OR rok_wydania LIKE @searchQuery;";
             List<Ksiazka> listaKsiazek = new List<Ksiazka>();
 
-            using(SqlConnection connection = new SqlConnection(connectionString))
+            string connectionStr = "Server=(localdb)\\mssqllocaldb;Database=biblioteka;Trusted_Connection=True;MultipleActiveResultSets=true";
+            using (SqlConnection connection = new SqlConnection(connectionStr))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -93,7 +100,7 @@ namespace Biblioteka.Controllers
                             int rok_wydania = Convert.ToInt32(reader["rok_wydania"]);
                             int ilosc = Convert.ToInt32(reader["ilosc"]);
 
-                            Ksiazka ksiazka = new Ksiazka(id_ksiazka, id_kategoria, autor, tytul, wydawnictwo, rok_wydania, ilosc );
+                            Ksiazka ksiazka = new Ksiazka(id_ksiazka, id_kategoria, autor, tytul, wydawnictwo, rok_wydania, ilosc);
 
                         }
                     }
@@ -102,5 +109,6 @@ namespace Biblioteka.Controllers
             return View("ListaKsiazek", listaKsiazek);
         }
     }
-   
+
 }
+*/
