@@ -10,8 +10,8 @@ namespace Biblioteka.Models
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int id_uzytkownik {  get; set; }
-		[Column(TypeName = "nvarchar(60")]
-		public string imie {  get; set; }
+        [Column(TypeName = "nvarchar(60")]
+        public string imie { get; set; }
         [Column(TypeName = "nvarchar(60")]
         public string nazwisko { get; set; }
         [Column(TypeName = "date")]
@@ -19,13 +19,14 @@ namespace Biblioteka.Models
         [Column(TypeName = "nvarchar(60")]
         public string miasto { get; set; }
         [Column(TypeName = "nvarchar(80")]
-        public string e-mail { get; set; }
+        public string email { get; set; }
         [Column(TypeName = "nvarchar(80")]
         public string haslo { get; set; }
         [Column(TypeName = "nvarchar(15")]
         public string rodzaj { get; set; }
 
-    }
+
+}
 
 }
 
