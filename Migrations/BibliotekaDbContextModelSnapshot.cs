@@ -31,7 +31,7 @@ namespace Biblioteka.Migrations
 
                     b.Property<string>("autor")
                         .IsRequired()
-                        .HasColumnType("Varchar(60)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int>("id_kategoria")
                         .HasColumnType("int");
@@ -44,11 +44,11 @@ namespace Biblioteka.Migrations
 
                     b.Property<string>("tytul")
                         .IsRequired()
-                        .HasColumnType("Varchar(60)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("wydawnictwo")
                         .IsRequired()
-                        .HasColumnType("Varchar(60)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.HasKey("id_ksiazka");
 

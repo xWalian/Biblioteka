@@ -17,9 +17,9 @@ namespace Biblioteka.Migrations
                     id_ksiazka = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     id_kategoria = table.Column<int>(type: "int", nullable: false),
-                    autor = table.Column<string>(type: "string", nullable: false),
-                    tytul = table.Column<string>(type: "string", nullable: false),
-                    wydawnictwo = table.Column<string>(type: "string", nullable: false),
+                    autor = table.Column<string>(type: "nvarchar(60)", nullable: false),
+                    tytul = table.Column<string>(type: "nvarchar(60)", nullable: false),
+                    wydawnictwo = table.Column<string>(type: "nvarchar(60)", nullable: false),
                     rok_wydania = table.Column<int>(type: "int", nullable: false),
                     ilosc = table.Column<int>(type: "int", nullable: false)
                 },

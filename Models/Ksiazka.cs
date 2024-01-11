@@ -11,11 +11,11 @@ namespace Biblioteka.Models
         public int id_ksiazka { get; set; }
         [Column(TypeName = "int")]
         public int id_kategoria { get; set; }
-        [Column(TypeName = "Varchar(60)")]
+        [Column(TypeName = "nvarchar(60)")]
         public string autor { get; set; }
-        [Column(TypeName = "Varchar(60)")]
+        [Column(TypeName = "nvarchar(60)")]
         public string tytul {  get; set; }
-        [Column(TypeName = "Varchar(60)")]
+        [Column(TypeName = "nvarchar(60)")]
         public string wydawnictwo {  get; set; }
         [Column(TypeName = "int")]
         public int rok_wydania {  get; set; }
