@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Biblioteka.Migrations
 {
-    [DbContext(typeof(KsiazkaDbContext))]
-    [Migration("20240111153941_initial")]
-    partial class initial
+    [DbContext(typeof(BibliotekaDbContext))]
+    [Migration("20240111183016_create")]
+    partial class create
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace Biblioteka.Migrations
 
                     b.Property<string>("autor")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("Varchar(60)");
 
                     b.Property<int>("id_kategoria")
                         .HasColumnType("int");
@@ -47,11 +47,11 @@ namespace Biblioteka.Migrations
 
                     b.Property<string>("tytul")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("Varchar(60)");
 
                     b.Property<string>("wydawnictwo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("Varchar(60)");
 
                     b.HasKey("id_ksiazka");
 

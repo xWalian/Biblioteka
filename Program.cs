@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Dodaj DbContext
-builder.Services.AddDbContext<KsiazkaDbContext>(options =>
+builder.Services.AddDbContext<BibliotekaDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("connectionstr")));
 
 builder.Services.AddControllersWithViews();

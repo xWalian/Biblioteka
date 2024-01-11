@@ -3,16 +3,19 @@ using Biblioteka.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace Biblioteka.Migrations
 {
-    [DbContext(typeof(KsiazkaDbContext))]
-    partial class KsiazkaDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(BibliotekaDbContext))]
+    [Migration("20240111182838_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +34,7 @@ namespace Biblioteka.Migrations
 
                     b.Property<string>("autor")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("string");
 
                     b.Property<int>("id_kategoria")
                         .HasColumnType("int");
@@ -44,11 +47,11 @@ namespace Biblioteka.Migrations
 
                     b.Property<string>("tytul")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("string");
 
                     b.Property<string>("wydawnictwo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("string");
 
                     b.HasKey("id_ksiazka");
 
