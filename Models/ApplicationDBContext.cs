@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿/*using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -10,8 +10,7 @@ public class ApplicationDBContext : IdentityDbContext<Uzytkownik>
 {
     public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
         : base(options)
-    {
-    }
+    {    }
     public DbSet<Uzytkownik> Uzytkownicy { get; set; }
     private class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<Uzytkownik>
     {
@@ -22,4 +21,4 @@ public class ApplicationDBContext : IdentityDbContext<Uzytkownik>
             builder.Property(x => x.email).HasMaxLength(20);
         }
     }
-}
+}*/

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Biblioteka.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Identity;
 
 namespace Biblioteka.Controllers
 
@@ -8,9 +9,11 @@ namespace Biblioteka.Controllers
     public class BibliotekaController : Controller
     {
         private readonly BibliotekaDbContext _context;
-        public BibliotekaController(BibliotekaDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        public BibliotekaController(BibliotekaDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         
         public IActionResult Index() {
