@@ -7,31 +7,39 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDistributedMemoryCache();
 
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
-// Dodaj DbContext
 builder.Services.AddDbContext<BibliotekaDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("connectionstr")));
-builder.Services.AddIdentityCore<IdentityUser>()
-    .AddEntityFrameworkStores<BibliotekaDbContext>()
-    .AddApiEndpoints();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<BibliotekaDbContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
-{
-    options.SignIn.RequireConfirmedAccount = false;
-})
-.AddEntityFrameworkStores<BibliotekaDbContext>()
-.AddRoles<IdentityRole>()
-.AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
 
 
 var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseMigrationsEndPoint();
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Biblioteka}/{action=Index}/{id?}");
+app.MapRazorPages();
+
 using (var scope = app.Services.CreateScope())
 {
     var roleManager =
@@ -47,6 +55,7 @@ using (var scope = app.Services.CreateScope())
         }
     }
 }
+
 using (var scope = app.Services.CreateScope())
 {
     var userManager =
@@ -85,20 +94,5 @@ using (var scope = app.Services.CreateScope())
         await userManager.AddToRoleAsync(user, "User");
     }
 }
-
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-}
-
-
-app.MapIdentityApi<IdentityUser>();
-
-app.UseStaticFiles();
-app.UseRouting();
-app.UseAuthorization();
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Biblioteka}/{action=Index}/{id?}");
 
 app.Run();
