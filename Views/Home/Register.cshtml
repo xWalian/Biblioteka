@@ -1,0 +1,56 @@
+﻿@model Biblioteka.Models.Uzytkownik
+
+@{
+    ViewBag.Title = "Register";
+}
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+            //@Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Register</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.imie)
+                        @Html.TextBoxFor(m => m.imie, "", new { @class = "form-control", @placeholder = "Imie" })
+                        @Html.ValidationMessageFor(m => m.imie, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.nazwisko)
+                        @Html.TextBoxFor(m => m.nazwisko, "", new { @class = "form-control", @placeholder = "Nazwisko" })
+                        @Html.ValidationMessageFor(m => m.nazwisko, "", new { @class = "badge badge-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.email)
+                        @Html.TextBoxFor(m => m.email, "", new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.email, "", new { @class = "badge badge-danger" })
+                        @if (ViewBag.error != null)
+                        {
+                            <span class="badge badge-danger">@ViewBag.error</span>
+                        }
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.haslo)
+                        @Html.PasswordFor(m => m.haslo, new { @class = "form-control", @placeholder = "Haslo:" })
+                        @Html.ValidationMessageFor(m => m.haslo, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.haslo)
+                        @Html.PasswordFor(m => m.haslo, new { @class = "form-control", @placeholder = "Powtórz haslo" })
+                        @Html.ValidationMessageFor(m => m.haslo, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-danger" value="Zarejestruj" />
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

@@ -5,14 +5,11 @@ namespace Biblioteka.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+
         private readonly BibliotekaDbContext _context;
-
-
 
         public HomeController(ILogger<HomeController> logger, BibliotekaDbContext ksiazkaDbContext)
         {
-            _logger = logger;
             _context = ksiazkaDbContext;
 
         }

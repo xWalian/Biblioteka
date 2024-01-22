@@ -15,7 +15,6 @@ namespace Biblioteka.Models
         public int id_uzytkownik { get; set; }
         [Column(TypeName = "date")]
         public DateTime data_wypozyczenia { get; set; }
-        [Column(TypeName = "date")]
-        public DateTime data_zwrotu {  get; set; }
+
     }
 }

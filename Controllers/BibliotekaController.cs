@@ -28,6 +28,7 @@ namespace Biblioteka.Controllers
                 {
                     var KsiazkiViewModel = new KsiazkaViewModel()
                     {
+                        id_ksiazka = ksiazka.id_ksiazka,
                         autor = ksiazka.autor,
                         tytul = ksiazka.tytul,
                         wydawnictwo = ksiazka.wydawnictwo,
@@ -39,6 +40,31 @@ namespace Biblioteka.Controllers
                 return View(ksiazkiList);
             }
             return View("");
+        }
+
+        [HttpPost]
+        public IActionResult Wypozycz(int id)
+        {
+            
+            var ksiazka = _context.Ksiazki.Find(id);
+            
+            if (ksiazka != null && ksiazka.ilosc > 0)
+            {
+
+                var wypozyczenie = new Wypozyczenia
+                {
+                    id_ksiazka = ksiazka.id_ksiazka, 
+                    data_wypozyczenia = DateTime.Now,            
+                };
+                ksiazka.ilosc -= 1;
+                _context.Update(ksiazka);
+                _context.Wypozyczenia.Add(wypozyczenie);
+                _context.SaveChanges();
+
+                return RedirectToAction("Ksiazki");
+            }
+
+            return RedirectToAction("Ksiazki");
         }
 
 
