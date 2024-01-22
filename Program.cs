@@ -85,7 +85,7 @@ using (var scope = app.Services.CreateScope())
         await userManager.AddToRoleAsync(user, "User");
     }
 }
-// Konfiguracja middleware'�w
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -93,11 +93,12 @@ if (!app.Environment.IsDevelopment())
 
 
 app.MapIdentityApi<IdentityUser>();
+
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Biblioteka}/{action=Index}/{id?}");
 
 app.Run();
