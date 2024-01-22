@@ -1,0 +1,45 @@
+﻿@model Biblioteka.Models.KsiazkaViewModel
+@{
+    ViewData["Title"] = "Dodaj Książkę";
+}
+<h3>@ViewData["Title"]</h3>
+
+<form asp-action="Dodaj" method="post">
+    <div class="form-group">
+        <label asp-for="id_kategoria" class="control-label">Id_kategorii:</label>
+        <input asp-for="id_kategoria" class="form-control" />
+        <span asp-validation-for="id_kategoria" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="autor" class="control-label">Autor:</label>
+        <input asp-for="autor" class="form-control" />
+        <span asp-validation-for="autor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="tytul" class="control-label">Tytuł:</label>
+        <input asp-for="tytul" class="form-control" />
+        <span asp-validation-for="tytul" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="wydawnictwo" class="control-label">Wydawnictwo:</label>
+        <input asp-for="wydawnictwo" class="form-control" />
+        <span asp-validation-for="wydawnictwo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="rok_wydania" class="control-label">Rok Wydania:</label>
+        <input asp-for="rok_wydania" class="form-control" />
+        <span asp-validation-for="rok_wydania" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ilosc" class="control-label">Ilość:</label>
+        <input asp-for="ilosc" class="form-control" />
+        <span asp-validation-for="ilosc" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Dodaj książkę</button>
+</form>

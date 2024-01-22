@@ -18,6 +18,6 @@ namespace Biblioteka.Models
         public int rok_wydania { get; set; }
         [DisplayName("ilosc")]
         public int ilosc { get; set; }
-
+        public bool CzyWypozyczona { get; set; }
     }
 }

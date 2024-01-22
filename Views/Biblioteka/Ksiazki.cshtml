@@ -6,13 +6,14 @@
 
 <table>
     <thead>
-        <form asp-action="WyszukajKsiazki" method="post">
-            <div>
-                <label for="searchQuery">Wyszukaj książki:</label>
-                <input type="text" name="searchQuery" />
-                <button type="submit">Szukaj</button>
-            </div>
+        <form asp-action="Szukaj" method="get">
+            <input type="text" name="searchTerm" placeholder="Szukaj ksiązki">
+            <button type="submit">szukaj</button>
         </form>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <a class="nav-link text-dark" asp-area="" asp-controller="Biblioteka" asp-action="Dodaj">Dodaj Książkę</a>
+        }
         <tr>
             <th>Tytul</th>
             <th>Autor</th>
@@ -27,18 +28,46 @@
             @foreach (var ksiazka in Model)
             {
                 <tr>
-                    <td>@ksiazka.id_ksiazka</td>
                     <td>@ksiazka.tytul</td>
                     <td>@ksiazka.autor</td>
-                    <td>@ksiazka.rok_wydania</td>
                     <td>@ksiazka.wydawnictwo</td>
+                    <td>@ksiazka.rok_wydania</td>
                     <td>@ksiazka.ilosc</td>
-                    <td>
-                        <form asp-action="Wypozycz" method="post">
-                            <input type="hidden" name="id" value="@ksiazka.id_ksiazka" /> 
-                            <button type="submit">Wypożycz</button>
-                        </form>
-                    </td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+                    {
+                        <td>
+                            @if (ksiazka.CzyWypozyczona)
+                            {
+                                <form asp-action="Zwroc" method="post">
+                                    <input type="hidden" name="id" value="@ksiazka.id_ksiazka" />
+                                    <button type="submit">Zwróć</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form asp-action="Wypozycz" method="post">
+                                    <input type="hidden" name="id" value="@ksiazka.id_ksiazka" />
+                                    <button type="submit">Wypożycz</button>
+                                </form>
+                            }
+                        </td>
+                    }
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <form asp-action="Edytuj" method="get">
+                                <input type="hidden" name="id" value="@ksiazka.id_ksiazka" />
+                                <button type="submit">Edytuj</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-action="Usun" method="post">
+                                <input type="hidden" name="id" value="@ksiazka.id_ksiazka" />
+                                <button type="submit">Usuń</button>
+                            </form>
+                        </td>
+                    }
+                    
                 </tr>
             }
         }

@@ -11,8 +11,8 @@ namespace Biblioteka.Models
         public int id { get; set; }
         [Column(TypeName ="int")]
         public int id_ksiazka {  get; set; }
-        [Column(TypeName = "int")]
-        public int id_uzytkownik { get; set; }
+        [Column(TypeName = "nvarchar(255)")]
+        public string id_uzytkownik { get; set; }
         [Column(TypeName = "date")]
         public DateTime data_wypozyczenia { get; set; }
 
