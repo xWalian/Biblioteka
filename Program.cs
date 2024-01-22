@@ -62,7 +62,7 @@ using (var scope = app.Services.CreateScope())
         scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
     string email = "admin@admin.com";
-    string password = "Test123.";
+    string password = "Kwakwa5!";
 
     if (await userManager.FindByEmailAsync(email) == null)
     {
@@ -81,7 +81,7 @@ using (var scope = app.Services.CreateScope())
         scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
     string email = "user@user.com";
-    string password = "Test123.";
+    string password = "Kwakwa5!";
 
     if (await userManager.FindByEmailAsync(email) == null)
     {
