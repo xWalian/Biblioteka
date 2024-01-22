@@ -16,6 +16,8 @@ builder.Services.AddSession(options =>
 // Dodaj DbContext
 builder.Services.AddDbContext<BibliotekaDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("connectionstr")));
+
+builder.Services.AddDefaultIdentity<Uzytkownik>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDBContext>();
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("connectionstr")));
 builder.Services.AddControllersWithViews();
@@ -24,7 +26,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Konfiguracja middleware'ów
+// Konfiguracja middleware'ï¿½w
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
